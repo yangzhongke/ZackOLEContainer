@@ -6,6 +6,8 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>Embed documents in Windows form applications, like Powerpoint(ppt, pptx), Word(doc,docx), Excel(xls,xlsx).
 This library supports .NET Core and .NET Framework.</Description>
+    <RepositoryUrl>https://github.com/yangzhongke/ZackOLEContainer</RepositoryUrl>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
