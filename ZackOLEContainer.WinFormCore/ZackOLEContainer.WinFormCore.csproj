@@ -3,6 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>Embed documents in Windows form applications, like Powerpoint(ppt, pptx), Word(doc,docx), Excel(xls,xlsx).
+This library supports .NET Core and .NET Framework.</Description>
   </PropertyGroup>
 
   <ItemGroup>

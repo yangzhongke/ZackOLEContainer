@@ -7,6 +7,9 @@ using System.Runtime.InteropServices;
 
 namespace ZackOLEContainerCore
 {
+    /// <summary>
+    /// adapted from https://www.codeproject.com/Tips/487566/OLE-container-surrogate-for-NET
+    /// </summary>
     public class PreviewHandlerHost:IDisposable
     {
         private object _currentPreviewHandler;
