@@ -1,4 +1,6 @@
+using PInvoke;
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows;
@@ -18,7 +20,7 @@ namespace ZackOLEContainer.WPFCore
             var hwndHost = IntPtr.Zero;
 
             int HOST_ID = 0x00000002;
-            hwndHost = CreateWindowEx(0, "static", "",
+            hwndHost = CreateWindowEx(0, "Static", "",
                                       WindowStyles.WS_CHILD | WindowStyles.WS_VISIBLE,
                                       0, 0,
                                       (int)this.ActualWidth, (int)this.ActualHeight,
@@ -30,11 +32,27 @@ namespace ZackOLEContainer.WPFCore
             return new HandleRef(this, hwndHost);
         }
 
+        protected override void OnWindowPositionChanged(Rect rcBoundingBox)
+        {
+            base.OnWindowPositionChanged(rcBoundingBox);
+            if (DesignerProperties.GetIsInDesignMode(this))
+            {
+                return;
+            }
+            var rect = BoundsRelativeTo(this, Window.GetWindow(this));
+            this.previewHandler.Resize(rect);
+            UpdateWindow(this.Handle);
+        }
         protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
         {
             base.OnRenderSizeChanged(sizeInfo);
-            this.previewHandler.Resize(BoundsRelativeTo(this, Window.GetWindow(this)));
-            UpdateWindow(this.Handle);
+            if (DesignerProperties.GetIsInDesignMode(this))
+            {
+                return;
+            }
+            var rect = BoundsRelativeTo(this, Window.GetWindow(this));
+            this.previewHandler.Resize(rect);
+            //UpdateWindow(this.Handle);
         }
 
 

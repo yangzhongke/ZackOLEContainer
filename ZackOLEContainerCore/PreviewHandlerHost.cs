@@ -22,14 +22,6 @@ namespace ZackOLEContainerCore
             this.handle = handle;
         }
 
-        public dynamic ComObject
-        {
-            get
-            {
-                return this._currentPreviewHandler;
-            }
-        }
-
         private Guid GetPreviewHandlerGUID(string filename)
         {
             // open the registry key corresponding to the file extension
