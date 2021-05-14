@@ -33,23 +33,31 @@ namespace ZackOLEContainerCore
         private Guid GetPreviewHandlerGUID(string filename)
         {
             // open the registry key corresponding to the file extension
-            RegistryKey ext = Registry.ClassesRoot.OpenSubKey(Path.GetExtension(filename));
-            if (ext != null)
+            RegistryKey regKeyExt = Registry.ClassesRoot.OpenSubKey(Path.GetExtension(filename));
+            if(regKeyExt==null)
             {
-                // open the key that indicates the GUID of the preview handler type
-                RegistryKey test = ext.OpenSubKey("shellex\\{8895b1c6-b41f-4c1c-a562-0d564250836f}");
-                if (test != null) return new Guid(Convert.ToString(test.GetValue(null)));
+                return Guid.Empty;
+            }
+            // open the key that indicates the GUID of the preview handler type
+            RegistryKey regKey = regKeyExt.OpenSubKey("shellex\\{8895b1c6-b41f-4c1c-a562-0d564250836f}");
+            if (regKey != null) return new Guid(Convert.ToString(regKey.GetValue(null)));
 
-                // sometimes preview handlers are declared on key for the class
-                string className = Convert.ToString(ext.GetValue(null));
-                if (className != null)
-                {
-                    test = Registry.ClassesRoot.OpenSubKey(className + "\\shellex\\{8895b1c6-b41f-4c1c-a562-0d564250836f}");
-                    if (test != null) return new Guid(Convert.ToString(test.GetValue(null)));
-                }
+            // sometimes preview handlers are declared on key for the class
+            string className = Convert.ToString(regKeyExt.GetValue(null));
+            if(className==null)
+            {
+                return Guid.Empty;
+            }
+            regKey = Registry.ClassesRoot.OpenSubKey(className + "\\shellex\\{8895b1c6-b41f-4c1c-a562-0d564250836f}");
+            if(regKey==null)
+            {
+                return Guid.Empty;
+            }
+            else
+            {
+                return new Guid(Convert.ToString(regKey.GetValue(null)));
             }
 
-            return Guid.Empty;
         }
 
         /// <summary>
@@ -127,21 +135,17 @@ namespace ZackOLEContainerCore
 
         public void UnloadPreviewHandler()
         {
-            try
+            if (_currentPreviewHandler is IPreviewHandler)
             {
-                if (_currentPreviewHandler is IPreviewHandler)
+                try
                 {
-                    try
-                    {
-                        // explicitly unload the content
-                        ((IPreviewHandler)_currentPreviewHandler).Unload();
-                    }
-                    catch (Exception)
-                    {
-                    }
+                    // explicitly unload the content
+                    ((IPreviewHandler)_currentPreviewHandler).Unload();
+                }
+                catch (Exception)
+                {
                 }
             }
-            catch (Exception) { }
 
             if (_currentPreviewHandlerStream != null)
             {

@@ -1,0 +1,17 @@
+﻿<Window x:Class="ZackOLEContainer.WPFCoreTests.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZackOLEContainer.WPFCoreTests"
+        xmlns:ole="clr-namespace:ZackOLEContainer.WPFCore;assembly=ZackOLEContainer.WPFCore"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="261*"/>
+            <ColumnDefinition Width="139*"/>
+        </Grid.ColumnDefinitions>
+        <ole:OLEContainer x:Name="oleContainer" Grid.ColumnSpan="2"></ole:OLEContainer>
+    </Grid>
+</Window>
