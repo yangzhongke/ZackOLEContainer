@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZackOLEContainerCore", "Zac
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZackOLEContainer.WinFormCore", "ZackOLEContainer.WinFormCore\ZackOLEContainer.WinFormCore.csproj", "{1C1288BD-30B7-4CAE-944A-082AD9EF174A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZackOLEContainer.WPFCore", "ZackOLEContainer.WPFCore\ZackOLEContainer.WPFCore.csproj", "{54AE6BE0-AC79-4158-8994-D0C0551F3BA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZackOLEContainer.WPFCore", "ZackOLEContainer.WPFCore\ZackOLEContainer.WPFCore.csproj", "{54AE6BE0-AC79-4158-8994-D0C0551F3BA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZackOLEContainer.WPFCoreTests", "ZackOLEContainer.WPFCoreTests\ZackOLEContainer.WPFCoreTests.csproj", "{6703A25D-3250-49E9-AED4-7BED4E842D97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZackOLEContainer.WPFCoreTests", "ZackOLEContainer.WPFCoreTests\ZackOLEContainer.WPFCoreTests.csproj", "{6703A25D-3250-49E9-AED4-7BED4E842D97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

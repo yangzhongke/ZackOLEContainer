@@ -4,10 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Description>Embed documents in Windows form applications, like Powerpoint(ppt, pptx), Word(doc,docx), Excel(xls,xlsx).
-This library supports .NET Core and .NET Framework.</Description>
+    <Description>Embed OLE documents(like Word, Excel, PowerPoint, etc) in WinForms application.</Description>
     <RepositoryUrl>https://github.com/yangzhongke/ZackOLEContainer</RepositoryUrl>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
